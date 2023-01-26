@@ -1,18 +1,15 @@
 // ES6 class components
 
 class ProductList extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      products: [],
-    };
-    this.handleProductUpvote = this.handleProductUpvote.bind(this);
-  }
+  state = {
+    products: [],
+  };
+  
   componentDidMount() {
     this.setState({ products: Seed.products });
   }
-  handleProductUpvote(productId) {
+  handleProductUpvote = (productId) => {
     // first we use map to traverse the products array 
     // & map returns a new array, instead of modifying the array this.state.products
     const nextProducts = this.state.products.map((product) => {
@@ -67,9 +64,9 @@ class Product extends React.Component {
     this.handleUpvote = this.handleUpvote.bind(this);
   }
 
-  handleUpvote() {
-    this.props.onVote(this.props.id);
-  }
+  handleUpvote = () => (
+    this.props.onVote(this.props.id)
+  )
   
   render() {
     return (
